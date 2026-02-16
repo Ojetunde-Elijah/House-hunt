@@ -2,7 +2,9 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext(null);
 
-const API = '/api';
+// Use deployed backend when set (e.g. Vercel); otherwise use relative /api (Vite proxy locally)
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+const API = `${API_BASE}/api`;
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -97,5 +99,6 @@ export function api(path, options = {}) {
   const t = localStorage.getItem('token');
   const headers = { ...options.headers, 'Content-Type': 'application/json' };
   if (t) headers.Authorization = `Bearer ${t}`;
-  return fetch(`/api${path.startsWith('/') ? path : `/${path}`}`, { ...options, headers });
+  const url = `${API}${path.startsWith('/') ? path : `/${path}`}`;
+  return fetch(url, { ...options, headers });
 }
