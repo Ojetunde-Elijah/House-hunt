@@ -1,0 +1,84 @@
+:root {
+  /* Soft pastel theme inspired by the screenshot */
+  --bg: #f3e9ff;            /* main background – light lavender */
+  --surface: #ffffff;       /* cards / panels */
+  --surface2: #e2d8ff;      /* subtle borders */
+  --text: #111827;          /* primary text – almost black */
+  --text-muted: #6b7280;    /* secondary text */
+  --accent: #16a34a;        /* green accent (buttons / CTAs) */
+  --accent-hover: #15803d;
+  --success: #22c55e;
+  --warning: #eab308;
+  --danger: #ef4444;
+  --verified: #16a34a;
+  --font: 'DM Sans', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.leaflet-container {
+  font-family: var(--font);
+}
+
+/* Simple motion helpers */
+.fade-in {
+  animation: fade-in-up 360ms ease-out;
+}
+
+.slide-up {
+  animation: fade-in-up 480ms ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
